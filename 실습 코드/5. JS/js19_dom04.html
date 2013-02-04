@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function addAppend(){
+            var fieldset = document.getElementById("addele");
+            var p = document.createElement("p");
+
+            // var txt = document.createTextNode("자식태그들 중 마지막에 붙여 넣는다.");
+            // p.appendChild(txt);
+            p.textContent = "자식태그들 중 마지막에 붙여 넣는다.";
+
+            fieldset.appendChild(p);
+        }
+
+        var count = 1;
+        function addBefore(){
+            var newP = document.createElement("p");
+            var fieldset = document.getElementById("addele");
+
+            newP.textContent = "엘리먼트의 앞에 붙여 넣는다." + (count++);
+
+            var oldDiv = document.querySelector("fieldset > div");
+            fieldset.insertBefore(newP, oldDiv);            //newP를 div 태그 이전에 추가되게 만듬.
+        }
+
+        var count = 0;
+        function addTest(){
+            var firD = document.getElementById("test01");
+            var addD = document.createElement("div");
+            var txt = document.createTextNode("dom test");
+            addD.appendChild(txt);
+            firD.appendChild(addD);
+            count++;
+            /*
+                var div = document.createElement("div");
+                div.textContent = "dom test";
+                document.getElementById("test01").appendChild(div);
+            */
+        }
+    
+        function moveTest(){
+            document.getElementById("test01").innerHTML = "";
+            var secD = document.getElementById("test02");
+            var str = "";
+            for(var i=0; i<count;i++){
+                 document.getElementById("test02").innerHTML += "dom test<br>";        
+            }
+            /*
+            var test01Chi = document.qeurySelector("#test01").children[0];
+            alert(test01Chi.parentNode.nodeName);       => 밑의div를 p로 바꿔버리면 여기 경고창에선 div로 나오지만
+            var test02 = document.getElementById("test02");
+            test02.appendChild(test01Chi);
+            alert(test01Chi.parentNode.nodeName);       => 여기선 p를 출력한다.
+            */
+        }
+    </script>
+    <style type="text/css">
+        p{
+            border : 1px solid red;
+        }
+        #test01,#test02{
+            width : 300px;
+            height : 300px;
+            border : 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>태그 추가하기</h1>
+    <button onclick="addAppend();">appendChild()</button>
+    <button onclick="addBefore();">insertBefore()</button>
+    <fieldset id="addele">
+        <legend>부모태그</legend>
+        <div>div태그</div>
+    </fieldset>
+
+    <h3>문제 1: test01태그에 "dom test"라는 내용을 가진 div태그를 추가
+        <button onclick="addTest();">클릭!</button>
+    </h3>
+    <h3>문제 2: test01태그에 추가된 태그들을 test02로 이동시켜보자.
+        <button onclick="moveTest();">클릭!</button>
+    </h3>
+
+    *test01
+    <div id="test01"></div>
+    *test02
+    <div id="test02"></div>
+
+
+</body>
+</html>

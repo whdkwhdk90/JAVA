@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        img{
+            width: 200px;
+            height: 200px;
+        }
+        .onoffimg{
+            display: none;
+        }
+        .addsize{
+            width : 300px;
+            height: 300px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#btn").click(function(){
+                $("img").toggleClass("onoffimg");               //toggleClass를 쓰면 $에 있는 태그에 클래스를 부여하거나 부여하지않거나하게함.
+            });
+
+            $("img").click(function(){
+                if($(this).hasClass("addsize")){
+                    $(this).removeClass("addsize").attr("title","이미지 축소");
+                }else{
+                    $(this).addClass("addsize").attr("title","이미지 확대");
+                }
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">이미지 on/off</button>
+
+    <br>
+    <img src="image/img01.PNG" alt="img01" title="이미지1번">
+    <img src="image/img02.PNG" alt="img02" title="이미지2번">
+    <img src="image/img03.PNG" alt="img03" title="이미지3번">
+
+</body>
+</html>

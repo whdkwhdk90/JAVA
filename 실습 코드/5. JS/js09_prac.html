@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    #print{
+        width : 400px;
+        height : 200px;
+        background-color: burlywood;
+        border : 1px solid red;
+    }
+    </style>
+    <script type="text/javascript">
+    function printValue(){
+
+        var nameEle = document.getElementsByTagName("input");
+        var name = nameEle[0].value;
+
+        var productEle = document.getElementById("pname").value;
+
+        var priceEle = document.getElementsByName("price");
+        var price = priceEle[0].value;
+
+        var area = document.getElementById("print");
+        area.innerHTML += "구매자명 : "+name+"<br>";
+        area.innerHTML += "상품명 : "+productEle+"<br>";
+        area.innerHTML += "구매가격 : "+price+"만원<br>";
+
+
+    }
+    </script>
+</head>
+<body>
+    <h2>연습</h2>
+    <label>구매자 : </label><input type="text" placeholder="구매자의 이름을 입력하세요">
+    <br><br>
+    <label>상품명 : </label><input type="text" id="pname" placeholder="구매 상품명을 입력하세요">
+    <br><br>
+    <label>가격 : </label><input type="text" name="price" placeholder="구매 가격을 입력하세요">
+    <br><br>
+    <button onclick="printValue();">출력</button>
+    <br><br>
+    <div id="print"></div>
+</body>
+</html>

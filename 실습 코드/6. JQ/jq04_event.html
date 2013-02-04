@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        div{
+            width: 400px;
+            height: 200px;
+            border: 2px solid red;
+            padding: 20px;
+        }
+        div p:first-child{
+            float: left;
+            border: 1px solid blue;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+        }
+        div p:last-child{
+            float: right;
+            border: 1px solid blue;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){                           //a태그만 클릭했는데 a p div alert가 연달아 나옴.(모두 이벤트가 발생) 
+                                                //가장 안쪽에 있는 태그부터 바깥까지 이벤트가 순차적으로 발생함 
+                                                //이벤트 전파(event propagation)
+            $("a:eq(0)").click(function(e){
+                alert("a클릭!");
+                // e.stopPropagation();            //e는 이벤트 객체, e.stopPropagation()하면 a클릭!만 뜨고 나머지는 안뜸
+                // e.preventDefault();             //전파는 막지않고 기본동작은 막아줌.(a클릭!이라는 alert창은 나오고 사이트를 이동시키지않음)
+                return false;                   //태그에 만들어져있는 기본동작을 막겠다라는 의미. + 전파도 막아줌.(한마디로 위 두개 플러스)
+            });
+            $("p").click(function(){
+                alert("p클릭!");
+            });
+            $("div").click(function(){
+                alert("div클릭!");
+            });
+
+            $("button").click(function(){               //미리 만들어둔 p에 대한 이벤트는 발생하지만 추가한 것에대해서는 발생하지않음.
+                $("body").append("<p>새로 추가된 p태그</p>");
+            });
+            $("body").on("click",">p",function(){        //body의 자식인 p태그들이 click이벤트 발생하면, function을 실행하겠다.
+                alert("새로 추가된 요소도 이벤트 적용!!!");
+            });                
+        });
+
+    </script>
+</head>
+<body>
+    <div>
+        <p>
+            <a href="https://www.naver.com">클릭!</a>
+        </p>
+        <p>
+            클릭!!
+        </p>
+    </div>
+    <div>
+        <p>
+            <a href="https://www.naver.com">클릭!</a>
+        </p>
+        <p>
+            클릭!!
+        </p>
+    </div>
+    <button>요소 추가</button>
+</body>
+</html>

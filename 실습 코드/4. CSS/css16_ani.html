@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style type="text/css">
+    div{
+        width:100px;
+        height:100px;
+        background-color: red;
+        font-size: 30pt;
+        word-wrap:break-word;
+        animation : mybox 4s infinite;
+    }
+    @keyframes mybox{       /*중간중간 상태 기술*/
+            /*0 50 100만 있는건 아니고 25나 75처럼 더 많은 숫자 추가 가능*/
+        0%{
+            width : 150px;
+            height : 150px;
+            background-color: yellow;
+            transform: translate(10px,10px);
+        }
+        50%{
+            width: 250px;
+            height: 250px;
+            background-color: orange;
+            transform: translate(100px,100px);
+        }
+        100%{
+            width: 200px;
+            height : 200px;
+            background-color: red;
+            transform: translate(10px,10px);
+        }
+    }
+   
+    </Style>
+</head>
+<body>
+    <h1>Animation 효과</h1>
+    <div>Animation</div>
+</body>
+</html>

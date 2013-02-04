@@ -1,0 +1,105 @@
+
+/* 타입 선택자 */
+pre{
+    text-align: center;
+}
+h1{
+    text-align: right;
+    color : blue;
+}
+
+/* id 선택자 */
+#sid01{
+    color:green;
+}
+#sid02{
+    color:yellow;
+}
+#sid03{
+    color:brown;
+}
+
+
+/* class 선택자 */
+.scls{
+    color : hotpink;
+}
+#scls{
+    color : black;
+}
+
+/* 전체 선택자 */ 
+/*
+*{
+        text-align: right;
+        margin: 0;
+        padding: 0;
+} */
+
+/* 자식 선택자 */
+
+#at >p {                
+    color : orange;      /* 마치 폴더의 경로 처럼 at안에 있는 p의 color를 바꾸겠다 */
+}
+#at>div >p {
+    color : red;         /* 마치 폴더의 경로 처럼 at안에 div안에 있는 p의 color를 바꾸겠다 */
+}
+
+/*인접 선택자 */
+h3 + b{
+    background-color: black;
+    color :white;
+} 
+
+span+b{                 /*기준 태그(span)을 기점으로 뒤에 나오는 태그 중 제일 가까운 태그에 적용*/
+    background-color: yellow;
+    color : green;
+}
+
+/* 속성 선택자 */
+p[title]{
+    color: skyblue;
+}
+p[title ="b"]{
+    background-color: black;
+}
+
+
+/* 가상 클래스 선택자 */
+a:link{
+    color:pink;
+    font-size: 50pt;
+}
+a:visited{              /*visited의 글자 크기는 link를 따라서 가기에 크기 수정이 안된다.(강사님이 알아보신다고 하심)*/
+    color:gray;
+    font-size: 20pt;
+}
+a:hover{                /*마우스가 그 글자 위에 올라갔을 때만 반응*/
+    background-color: purple;
+}
+a:active{               /*마우스로 눌렸을 때의 반응*/
+    color:yellow;
+}
+
+input:checked{
+    width:200px;
+    height:200px;
+}
+
+/*종속 선택자*/
+li.acls01{                  /* li태그들 중에 클래스가 acls01인 애들만 바꾸겠다*/
+    background-color: teal;
+}
+li.acls02#sdili{            
+    color: red;
+}
+
+/* 하위 선택자 */
+div span{
+    background-color: yellow;
+}
+
+/* 그룹선택자 */
+p,pre,strong{
+    color:lime;
+}

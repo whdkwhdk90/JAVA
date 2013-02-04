@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        function click01(){
+            var inputVal = $("input:text").val();
+            alert(inputVal);
+        }
+
+        function click02(){
+            var inputVal = $("input:radio").val();
+            $("#view").html(inputVal);
+        }
+
+        function click03(){
+            var inputVal = $("input:checkbox").val();
+            $("#view").html(inputVal);
+        }
+    </script>
+</head>
+<body>
+    <form action="">
+        <input type="text">
+        <input type="button" value="선택" onclick="click01();">
+        <input type="radio" value="20/03/25~" onclick="click02();">스마트 콘텐츠
+        <div id="view"></div>
+        <input type="checkbox" value="양성과정" onclick="click03();">양성과정
+
+    </form>
+</body>
+</html>

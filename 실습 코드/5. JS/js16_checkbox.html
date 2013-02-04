@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #colorbox{
+            width : 320px;
+            height : 320px;
+            position: relative;
+        }
+        #red, #blue, #yellow, #black{
+            width : 150px;
+            height : 150px;
+            border : 1px solid black;
+            position: absolute;
+        }
+        #yellow{
+           left : 160px;
+        }
+        #blue{
+            top : 160px;
+        }
+        #black{
+            left : 160px;
+            top : 160px;
+        }
+
+    </style>
+    <script>
+        function sel(){
+            var chks = document.getElementsByName("chk");
+            
+            if(chkChecked(chks) >0){
+                for(var i=0; i<chks.length;i++){
+                    if(chks[i].checked){
+                        document.getElementById(chks[i].value).style.backgroundColor = chks[i].value;
+                    }else{
+                        document.getElementById(chks[i].value).style.backgroundColor = "white";
+                    }
+                }
+            }else{
+               clearDiv();
+            }
+        }
+
+        function chkChecked(chks){
+           var count = 0;
+           for(var i =0; i<chks.length;i++){
+               if(chks[i].checked){
+                   count++;
+               }
+           }
+           return count;
+        }
+       
+        function clearDiv(){
+            var colorboxs = document.querySelectorAll("#colorbox > div");       //colorbox안에 있는 div를 모두 선택하겠다.
+            for(var i=0; i<colorboxs.length; i++){
+                colorboxs[i].style.backgroundColor = "white";
+            }
+        }
+
+        function allsel(check){
+            var chks = document.getElementsByName("chk");
+           for(var i=0; i<chks.length;i++){
+               chks[i].checked = check;     //현재 넘어왔던 상태와 동일하게 맞춰줌.
+           }
+        }
+
+        function clear2(){
+          clearDiv();
+          var area = document.getElementsByTagName("input");
+          for(var i =0; i<area.length;i++){
+              area[i].checked = false;
+          }
+        }
+    </script>
+</head>
+<body>
+    <div id="colorbox">
+        <div id="red"></div>
+        <div id="yellow"></div>
+        <div id="blue"></div>
+        <div id="black"></div>
+    </div>
+    <div id="base">
+        <form>
+            <input type="checkbox" name="all" onclick="allsel(this.checked);">전체선택<br>     
+             <!-- this.checked는 true 혹은 false값을 지님.  그러니까 위에서의 check에도 같은 true와 같은 false가 들어감.-->
+            <input type="checkbox" name="chk" value="red">빨강<br>
+            <input type="checkbox" name="chk" value="yellow">노랑<br>
+            <input type="checkbox" name="chk" value="blue">파랑<br>
+            <input type="checkbox" name="chk" value="black">검정<br>
+            <input type="button" value="선택" onclick="sel();">
+            <input type="button" value="초기화" onclick="clear2();">
+        </form>
+    </div>
+
+
+</body>
+</html>

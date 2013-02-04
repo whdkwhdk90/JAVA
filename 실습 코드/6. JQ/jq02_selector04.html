@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#signal").submit(function(){
+                if( $(".infobox").val()==null || $(".infobox").val()==""){
+                    $(".error").show();
+                    return false;
+                }
+            })
+
+            $("#confirm").click(function(){
+                $("#result").empty();   //div창 비우기
+                if($("input[name=chk]:checked").length==0){
+                    alert("하나 이상 선택해 주세요");
+                }else{
+                    // each() 배열 안에서 모든 경우들을 접해보는것.
+                    // i 라는 값은 for의 변수와 같다. 초기화, 증감식 필요없다.
+                    $("input[name=chk]:checked").each(function(i){
+                        var chk = $("input[name=chk]:checked").eq(i);
+                        //다시 새롭게 선택을 한것이다. (선택된 값을 가져오는데)
+                        var book = chk.next().text(); //<b>태그의 text를 가져오겠다는 의미이다.
+                        var price = chk.val(); //그 체크된 사항의 value값
+                        $("#result").append(book+"가격"+price+"<br>");
+                    });  
+                }     
+            });
+
+            $("input[name=chk]").click(function(){
+                    if($("input[name=chk]").length == $("input[name=chk]:checked").length){
+                        $("input[name=all]").prop("checked", true);
+                    }else{
+                        $("input[name=all]").prop("checked",false);
+                    }
+            });    
+        });
+
+        function allchk(bool){
+                $("input[name=chk]").each(function(){
+                    $(this).prop("checked",bool);
+                });
+        }
+    </script>
+</head>
+<body>
+    <form action="" id="signal" method="GET">
+        <div>
+            <span class="label">UserID : </span>
+            <input type="text" class="infobox" name="userId">
+            <span class="error" style="color:red; display:none;">반드시 입력하세요!!</span>
+        </div>
+        <input type="submit" class="submit" value="입력하기">
+
+    </form>
+
+    <hr>
+    <fieldset style="width: 300px;">
+        <legend>체크 여부 확인</legend>
+        <input type="checkbox" name="all" onclick="allchk(this.checked);">전체선택<br>
+
+        <input type="checkbox" name="chk" value="20000">
+        <b>java</b><br>
+        <input type="checkbox" name="chk" value="25000">
+        <b>JS</b><br>
+        <input type="checkbox" name="chk" value="30000">
+        <b>spring</b><br>
+        
+        <input type="button" value="확인" id="confirm"><br>
+
+        <span>선택한 책 가격</span>
+        <div id="result"></div>
+    </fieldset>
+</body>
+</html>

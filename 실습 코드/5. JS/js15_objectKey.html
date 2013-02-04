@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .area{
+            border : 1px solid red;
+            background-color:  lightgrey;
+            height : 150px;
+        }
+    </style>
+</head>
+<body>
+    <h3>instanceof 키워드</h3>
+    <p>해당 객체가 어떠한 함수를 통해 생성되었는지 확인</p>
+    <button onclick="test1();">클릭!</button>
+    <div id="area1" class="area"></div>
+    <script>
+        function Dog(name){
+            this.name = name;
+        }
+        function test1(){
+            var myDog = new Dog('멍충이');
+
+            var area = document.getElementById("area1");
+            area.innerHTML += "myDog istanceof Dog : " + (myDog instanceof Dog) + "<br>";   //true
+            area.innerHTML += "myDog istanceof Dog : " + (myDog instanceof Number) + "<br>";    //false
+            area.innerHTML += "myDog istanceof Dog : " + (myDog instanceof String) + "<br>";    //false
+        }
+    </script>
+</body>
+</html>

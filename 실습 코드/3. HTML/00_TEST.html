@@ -1,0 +1,42 @@
+<!DOCTYPE html>     <!--document type-->
+<html lang="en">
+<head>              
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>      <!--몸체 부분. 실제로 보이는 부분 인 듯?--> <!--감싸는 것을 엘리먼트 or 요소라고 하고 중간에 들어가는건 컨텐트라고 함-->
+    
+    <h1>자기 소개서</h1>
+    <table border = "1">   <!-- border는 테두리를 의미함-->
+        <tr>    <!--테이블의 row 개념(1줄 추가)-->
+            <th>NAME</th>       <!-- <> </> 이거나 <    />으로 태그를 나타낼 수 있다.-->
+            <td><input type="text"/></td>               <!--4칸짜리(name|텍스트 칸 |age|텍스트 칸)-->
+            <th>AGE</th>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <th>ADDR</th>           <!-- colspan =3하면 3칸을 먹어서 만든다는 의미인듯? 위에 4칸 만들어진것 중 addr 한칸 빼고 3칸을 텍스트필드로 만듬.-->
+            <td colspan="3"><input type="text" size ="80"/></td>
+
+
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>자기소개</th>
+            <td colspan ="4"><textarea rows="10" cols="100"></textarea></td>
+        </tr>
+
+    </table>
+
+
+
+
+
+</body>
+</html>
+
+
+
+<!-- 웹에서의 주소는 해당 문서의 위치를 말함.-->

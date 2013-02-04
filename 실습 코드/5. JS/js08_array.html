@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            border : 1px solid red;
+            height : 400px;
+        }
+    </style>
+
+    <script type="text/javascript">
+    function arrayTest1(){
+        var arr = ['이창진',19,true,[1,2,3,4]];
+
+        document.getElementById("area1").innerHTML += arr;
+    }
+
+    function arrayTest2(){
+        //indexOf() : 배열에서 요소가 위치한 인덱스 리턴
+        var area = document.getElementById("area2");
+        var arr = ['사과','딸기','바나나','복숭아','키위','파인애플','토마토'];
+
+        area.innerHTML += "바나나가 있는 인덱스: "+arr.indexOf('바나나');
+
+        //concat(배열명) : 배열을 합친다.
+        var arr2 =['망고','멜론','오렌지','샤인머스켓','두리안','낑깡'];
+
+        var conArr = arr.concat(arr2);
+        area.innerHTML += "<br>conArr : "+conArr;
+
+        //join() : 특정 값을 배열 요소 사이마다 삽입하여 문자열로 반환
+        // 출력은 가++나++다++라로 됨.
+        var joinTest = ["가","나","다","라"].join("++");
+        area.innerHTML += "<br>join: "+joinTest;
+
+        //reverse() : 배열의 순서를 뒤집는다.
+        var reArr = [1,2,3,4,5,6,7];
+        area.innerHTML += "reArr : "+reArr;
+        area.innerHTML += "<br>reArr Reverse() : " + reArr.reverse();
+
+        //push() : 배열의 맨 뒤에 요소 추가,
+        //pop() : 배열의 맨 뒤의 요소 제거
+        var pArr =['서초동','방배동','역삼동','삼성동','대치동'];
+        area.innerHTML += "<br>pArr의 기본값 : " + pArr;
+        pArr.push('양재동');
+        area.innerHTML += "<br>pArr에 push() : " + pArr;
+
+        pArr.pop();
+        area.innerHTML += "<br>pArr에 pop(): " + pArr;
+
+        //sort() 정렬
+        pArr.sort();
+        area.innerHTML += "<br>pArr에 sort(): " + pArr;
+
+        //unshift() : 배열의 맨 앞에 요소 추가,
+        //shift() : 배열의 맨 앞의 요소 제거
+        var sArr =['야구','축구','농구','볼링','탁구'];
+        area.innerHTML += "<br> sArr의 기본값 : "+ sArr;
+
+        area.innerHTML += "<br>sArr에 shift() 하면? : "+ sArr.shift();
+        area.innerHTML += "<br>sArr은..? : " + sArr;
+        area.innerHTML += "<br>sArr에 unshift()를 : " + sArr.unshift('배구');
+        // 여기서 sArr.unshift('배구') 하면 5가 나오는데 5는 배구까지 추가됐을때의
+        // 배열의 길이임.
+
+    }
+
+    function arrayTest3(){
+        var area= document.getElementById("area3");
+
+        var arr = ['자바','오라클','html','css','js'];
+        area.innerHTML += "원본 arr : "+ arr;
+
+        //slice() : 배열의 요소 선택 잘라내기
+        //( slice(startindex, endindex))
+        // index는 배열의 index임. substring처럼 하나하나가 아님.
+        //원본을 건드리진 않고 원하는 부분만 출력하는 형태
+        area.innerHTML += "<br>slice를 해보면 : "+ arr.slice(2,4);
+        area.innerHTML += "<br>slice후 원본: "+arr;
+        
+        //splice() : 배열의 요소 선택 잘라내기, 원본 배열에 영향o
+        //splice(startindex, delete size) => 2부터 시작해서 2개 제거하겠다.
+         //splice(startindex, delete size,'추가 값') => 2개 자르면서 그자리에 spring 추가
+        area.innerHTML += "<br>splice 해보자 : "+ arr.splice(2,2,'spring');
+        area.innerHTML += "<br>splice 후 원본: "+arr;
+
+        //tostring() : 배열을 문자열로 반환
+        var tArr = ['장하영','김승진','민경민','황선웅'];
+        area.innerHTML += "<br><br>tArr : "+ tArr;
+
+        area.innerHTML += "<br>tArr toString 해보자 : "+  tArr.toString();
+        area.innerHTML += "<br>자료형: "+ typeof tArr;  //object 타입
+                                        // typeof(tArr)도 가능.
+        area.innerHTML += "<br>자료형: "+ typeof tArr.toString(); //string 타입
+        
+        var str = tArr.toString();
+        area.innerHTML += "<br>str의 자료형은? : " + typeof(str);
+        area.innerHTML += "<br>join : "+ tArr.join();
+
+
+    }
+
+
+    </script>
+
+</head>
+<body>
+    <h2>배열</h2>
+
+    <h3>배열이란 : 자바스크립트에서는 자료형 지정이 없기 때문에
+         모든 자료형을 보관하는 변수의 모음. 자바의 컬렉션과 비슷
+    </h3>
+    <div id="area1" class="area"></div>
+    <button onclick="arrayTest1();">클릭!</button>
+
+    <h3>array객체의 함수</h3>
+    <div id="area2" class="area"></div>
+    <button onclick="arrayTest2();">클릭!!</button>
+
+    <h3>array객체의 함수2</h3>
+    <div id="area3" class="area"></div>
+    <button onclick="arrayTest3();">클릭!!!</button>
+
+
+
+</body>
+</html>

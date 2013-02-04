@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function strTest01(){
+            var str01 = "String";
+            var str02 = "Test";
+
+            //'+'
+            var str03 = str01 + str02;
+            alert("str01 + str02 = "+str03);
+
+            //concat() : 여러 문자열을 입력해서 하나로 합치는 함수
+            var newString = str01.concat("Test");
+            alert("concat() = "+newString);
+        }
+
+        function strTest02(){
+            var numVal = 12.5;
+            var bool = true;
+            var res = "String" + numVal + bool;
+            alert(res+" : "+typeof res);
+        }
+
+        function strTest03(){
+            var str = prompt("이름을 입력하세요~");
+            var span = document.getElementById("res");
+
+            if(str == "lee"){
+                span.textContent = str + "님, 환영합니다.";
+            }else if(str.toLowerCase() == "lee"){
+                span.textContent = str + "님, 환영합니다.";
+            }else{
+                span.textContent = "이름을 확인해주세요.";
+            }
+
+            //동등연산자 ==
+            // 비교하는 자료형에도 자동 형변환
+            var numVal = 10;
+            if(numVal == "10"){
+                alert("==연산자 사용 : 숫자 10이 맞습니다.");
+            }else{
+                alert("==연산자 사용 : 숫자 10이 아닙니다.");
+            }
+
+            //만약, 자료형의 자동 형변환을 원하지 않는다면
+            //===연산자 사용(엄격한 비교)
+            if(numVal === "10"){
+                alert("===연산자 사용 : 숫자 10이 맞습니다.");
+            }else{
+                alert("===연산자 사용 : 숫자 10이 아닙니다.");
+            }
+        }
+
+        //indexOf() : 왼쪽 --> 오른쪽순으로 검색, 없는 이름은 -1 리턴.
+        //lastIndexOf() : 오른쪽 --> 왼쪽순으로 검색.
+        //발견의 순서만 정해진 것일뿐 기준은 왼쪽부터 셈.
+        function strTest04(){
+            var str = "추민석 한예인 홍주연 황선웅 권궁 추민석";
+            var prop = prompt("검색할 이름을 입력해주세요.");
+
+            alert("indexOf(): "+str.indexOf(prop));
+            alert("lastIndexOf() : "+ str.lastIndexOf(prop));
+            //추민석 검색하면 19나오는데 글자 및 공백도 다 계산하고 추라는 글자를 만난 값 리턴.
+        }
+
+        function strTest05(){
+            //substring() : 문자열을 시작인덱스와 종료인덱스로 추출
+
+            var strVal = "문자열 추출하기. 관련 함수 : indexOf,substring.";
+            var startIndex = strVal.indexOf(":");
+            var endIndex = strVal.lastIndexOf(".");
+            var subStr = strVal.substring(startIndex,endIndex);
+            alert(subStr);
+
+            var splitVal = subStr.split(",");
+            alert(splitVal[1]);
+            alert(splitVal[0]);
+    
+
+        }
+
+    </script>
+</head>
+<body>
+    <p> 문자열 합치기
+        <button onclick="strTest01();">클릭!</button>
+    </p>
+    
+    <p> 다른 자료형 합치기
+        <button onclick="strTest02();">클릭!!</button>
+    </p>
+
+    <p> 문자열 비교하기
+        <button onclick="strTest03();">클릭!!!</button>
+        <span id="res"></span>
+    </p>
+
+    <p> 문자열 검색하기
+        <button onclick="strTest04();">클릭!!!!</button>
+    </p>
+
+    <p> 문자열 추출하기
+        <button onclick="strTest05();">클릭!!!!!</button>
+    </p>
+
+</body>
+</html>

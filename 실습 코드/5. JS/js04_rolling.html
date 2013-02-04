@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+    img{
+        width : 200px;
+        height : 200px;
+    }
+
+    </style>
+
+    <script type="text/javascript">
+        var num = 1;
+
+        function nextGallery(){
+            num++;
+            if(num>5){
+                num =1;
+            }
+            document.getElementById("gallery").src="image/img0"+num+".png";
+        }
+        function prevGallery(){
+            num--;
+            if(num<1){
+                num =5;
+            }
+            document.getElementById("gallery").src="image/img0"+num+".png";
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div id="galleryWrap">
+        <p>
+            <a onclick="return prevGallery();" href = "https://www.naver.com">이전</a>
+            <img src="image/img01.png" id="gallery">
+            <a onclick="nextGallery();">다음</a>
+        </p>
+    </div>
+</body>
+</html>

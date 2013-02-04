@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>데이터 가져오기</h1>
+	<fieldset>
+		<legend>사원 전체 조회</legend>
+		<input type="button" value="조회" id="emp_search">
+	</fieldset>
+</body>
+</html>
