@@ -9,7 +9,7 @@ public class Main {
 		MemberMenu mMenu = new MemberMenu();
 		mMenu.mainMenu();
 
-		System.out.println("회원관리 프로그램을 종효합니다.");
+		System.out.println("회원관리 프로그램을 종료합니다.");
 	}
 
 }

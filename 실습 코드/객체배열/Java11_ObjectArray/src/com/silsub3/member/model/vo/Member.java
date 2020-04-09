@@ -69,10 +69,12 @@ public void setAge(int age) {
 	this.age = age;
 }
 	
-public String memberInfo() {
-	return "아이디 : "+id+", 이름 : "+name+", 패스워드 : "+password
-			+", 이메일주소 : "+email+", 성별 : "+gender+", 나이 : "+age;
-}	
+
+
+	public String memberInfo() {
+		return "아이디 : "+id+", 이름 : "+name+", 패스워드 : "+password
+				+", 이메일주소 : "+email+", 성별 : "+gender+", 나이 : "+age;
+	}	
 	
 	
 	
