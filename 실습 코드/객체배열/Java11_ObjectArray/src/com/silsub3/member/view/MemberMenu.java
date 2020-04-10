@@ -70,11 +70,11 @@ public class MemberMenu {
 		switch(num) {
 		case 1:
 			System.out.print("아이디를 입력하시오 : ");
-			String str = sc.next();
-		
-		
-		
-		
+			String name = sc.next();
+			mManager.searchMemberId(name);
+			break;
+		case 2:
+			
 		}
 		
 	}while((answer=='y')||(answer=='Y'));

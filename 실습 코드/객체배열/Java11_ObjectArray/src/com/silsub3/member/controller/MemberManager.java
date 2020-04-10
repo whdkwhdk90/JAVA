@@ -23,7 +23,11 @@ public class MemberManager {
 	public void sortAgeDes() {}
 	
 	public void sortGenderDes() {}
-	
-	
+
+	public int searchMemberId(String name) {
+		
+		return -1;
+	}
+
 	
 }
