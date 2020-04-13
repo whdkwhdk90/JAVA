@@ -30,6 +30,7 @@ public Triangle(double base, double height) {
 	
 	@Override
 	public double perimeter() {
+		System.out.print("삼각형의 ");
 		return ((Math.sqrt(base*base + height*height)) + base+height);
 	}
 
