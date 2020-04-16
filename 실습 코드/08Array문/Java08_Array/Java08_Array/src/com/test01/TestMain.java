@@ -6,7 +6,7 @@ public class TestMain {
 		ArrayTest01 at01 = new ArrayTest01();
 //		at01.testArray();
 //		at01.testArray2();
-		at01.testArray3();
+//		at01.testArray3();
 			
 		
 		

@@ -1,7 +1,5 @@
 package com.kh.inputTest;
 
-import java.util.StringTokenizer;
-
 public class TestCommandLine {
 					
 		public static void main(String[] test) {

@@ -8,7 +8,7 @@ public class Main {
 //		init.testInit();
 //		init.testInit2();
 //		init.testInit3();
-		init.testInit4();
+//		init.testInit4();
 		
 		DeArrayTest02 init1  = new DeArrayTest02();
 		init1.test01();

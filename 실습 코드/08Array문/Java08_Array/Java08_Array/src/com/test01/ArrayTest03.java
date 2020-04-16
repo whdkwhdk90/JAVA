@@ -23,10 +23,7 @@ public class ArrayTest03 {
 		}
 		System.out.println("1.originArr : " + str);
 		
-		
-		
-		
-		
+
 		str = "";
 		
 		for(int i = 0; i <copyArr.length; i++) {
@@ -81,10 +78,6 @@ public class ArrayTest03 {
 		}
 		System.out.println("1.originArr : " + str);
 		
-		
-		
-		
-		
 		str = "";
 		// 복사 배열값 출력
 		for(int i = 0; i <copyArr.length; i++) {
@@ -92,6 +85,8 @@ public class ArrayTest03 {
 		}
 		System.out.println("2.copyArr : " + str);
 		
+		System.out.println("originArr의 hashcode : " + originArr.hashCode());		
+		System.out.println("copyArr의 hashcode : " + copyArr.hashCode());
 		
 		//원본배열의 0번 인덱스의 값을 99로 변경//////////////////////////////////////////////////////////////////////////////
 		
@@ -103,9 +98,7 @@ public class ArrayTest03 {
 			str += originArr[i] + " ";
 		}
 		System.out.println("1.originArr : " + str);
-		
-
-		
+	
 		
 		str = "";
 		// 복사 배열값 출력
@@ -159,6 +152,23 @@ public class ArrayTest03 {
 		int[] copyArr = new int[10];
 		
 		copyArr = originArr.clone();
+		
+		//원본 배열값 출력
+		String str = "";
+		for(int i = 0; i <originArr.length; i++) {
+			str += originArr[i] + " ";
+		}
+		System.out.println("1.originArr : " + str);
+				
+				
+		str = "";
+		// 복사 배열값 출력
+		for(int i = 0; i <copyArr.length; i++) {
+			str += copyArr[i] + " ";		
+		}
+		System.out.println("2.copyArr : " + str);
+		
+		
 		System.out.println("복사한 후 원본 배열의 주소 : " +originArr.hashCode());
 		System.out.println("복사한 후 복사본 배열의 주소 : " +copyArr.hashCode());
 		

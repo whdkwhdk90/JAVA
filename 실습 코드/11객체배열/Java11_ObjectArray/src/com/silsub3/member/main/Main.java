@@ -1,4 +1,4 @@
-package com.silsub3.memer.main;
+package com.silsub3.member.main;
 
 import com.silsub3.member.view.MemberMenu;
 

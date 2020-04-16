@@ -33,7 +33,7 @@ public void setHeight(int height) {
 
 @Override
 public void draw() {
-	int Sum = this.width*this.height;
+	int Sum = getWidth()*this.height;
 	int Length = 2*(this.width+this.height);
 	
 	super.draw();
