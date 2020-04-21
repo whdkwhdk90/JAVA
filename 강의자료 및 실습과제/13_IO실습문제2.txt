@@ -1,0 +1,81 @@
+[보조스트림 입출력 실습문제]
+
+<문제 1>
+ : 문자기반스트림과 보조스트림으로 버퍼이용스트림 클래스를 사용하시오.
+
+- 클래스명 : com.io.silsub2.run.Run.java
+	main() 메소드 포함
+	1. NoteMenu 클래스의 menu() 메소드 실행함
+
+
+- 클래스명 : com.io.silsub2.view.NoteMenu.java
+	1. public void menu() 작성
+	* 구현 내용
+	NoteManager 클래스 객체 생성함
+	키보드 입력용 객체 생성함
+	
+	아래 내용이 콘솔에 출력되게 함
+
+	******   MyNote  *******
+
+	1. 노트 새로 만들기		//NoteManager의 fileSave()
+	2. 노트 열기		//NoteManager의 fileOpen()
+	3. 끝내기		//main() 으로 리턴
+
+	메뉴 선택 : 번호입력
+
+	입력된 번호에 따라, NoteManager 의 메소드 실행시킴
+	메뉴 반복 실행
+
+
+ - 클래스명 : com.io.silsub2.controller.NoteManager.java
+ - Field : - sc:Scanner	//초기화 생성함
+ - Method
+	+ fileSave():void
+	+ fileOpen():void
+
+
+
+ - 클래스명 : com.io.silsub2.model.dao.NoteDao.java
+ - Method
+	+ fileSave(sb:StringBuilder, fileName:String) : int
+	+ fileOpen(fileName:String) :StringBuilder
+
+
+
+ - 구현내용
+	* NoteManager클래스의 fileSave() 메소드 -------------------------------------------
+	1. "파일에 저장할 내용을 입력하시오"  출력
+	2. StringBuilder 를 사용하여 문자열을 반복해서 입력받아 추가함
+	3. "exit" 입력되면 반복 종료함
+	4. "저장하시겠습니까? (y/n) : " 출력
+	5. 입력값이 대소문자 상관없이 'Y' 이면, "저장할 파일명을 입력하세요 : " 출력
+	6. NoteDao클래스의 fileSave()메소드 호출하면서, 인자로 StringBuilder 객체과 파일명 전달
+
+
+
+	* NoteDao클래스의 + fileSave(sb:StringBuilder, fileName:String) : StringBuilder 메소드 -------------------------------------------
+	
+	1. 전달받은 파일명으로 파일 출력용 스트림(FileWriter) 생성(BufferedWriter 보조스트림 사용)
+	2. 전달받은 StringBuilder 객체를 파일에 기록.
+	3. "oooo.txt 파일에 성공적으로 저장하였습니다." 출력
+	4. 스트림 반납하고 종료함
+
+
+
+	* NoteManager클래스의 fileOpen() 메소드 ----------------------------------------
+	1. "열기할 파일명을 입력하세요 : " 출력하고, 파일명 입력받음
+	2. StringBuilder 레퍼런스 선언 후 NoteDao의 fileOpen() 메소드 호출하여 리턴받음
+
+
+
+	* NoteDao클래스의 + fileOpen(fileName:String)메소드 -------------------------------------------
+	1. 파일 입력 스트림(FileReader)  생성 (BufferedReader 보조스트림 사용)
+	2. StringBuilder 객체 생성 후 파일에서 읽어온 값 저장
+	3. finally 블럭에서 스트림 반납
+	4. 리턴값으로 StringBuilder 객체 전달
+	
+
+	* NoteManager클래스의 fileOpen() 메소드 ----------------------------------------
+	3. StringBuilder 내용을 화면에 출력함
+
