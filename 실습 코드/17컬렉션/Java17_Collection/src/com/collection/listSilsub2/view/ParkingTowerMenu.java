@@ -43,9 +43,9 @@ public class ParkingTowerMenu {
 				searchCar();
 				break;
 			case 0:
-			default:
 				System.out.println("프로그램 종료");
 				return;
+			default:
 			}
 		
 		}while(true);	
@@ -82,7 +82,9 @@ public class ParkingTowerMenu {
 	public void deleteCar() {
 		System.out.print("차량 번호: ");
 		int bun = sc.nextInt();
-		int res = ptm.deleteCar(bun);
+		System.out.print("차주 이름: ");
+		String name = sc.next();
+		int res = ptm.deleteCar(bun, name);
 		
 		if(res ==1) {
 			System.out.println("차량 출차 완료");

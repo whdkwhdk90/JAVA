@@ -8,7 +8,7 @@ import java.util.Set;
 
 import com.collection.listSilsub2.model.Car;
 
-public class ParkingTowerManager {
+public class ParkingTowerManager{
 
 	private HashMap<Integer,Car> carMap = new HashMap<>();
 	private int parkingNo = 0;
@@ -26,28 +26,43 @@ public class ParkingTowerManager {
 		return carMap;
 	}
 	
-	public int deleteCar(int carNum) {
+	public int deleteCar(int carNum, String name) {
 	
 		int[] iarr = new int[1000];
 		int res=0;
 		int i=0;
 		int count =0;
-		for(Map.Entry<Integer, Car> entry : carMap.entrySet()) {		
-			Car car = entry.getValue();
-			int num = entry.getKey();
-			if(car.getCarNum()==carNum) {
-				iarr[i] = num;
-				i++;
-				res = 1;
-				count ++;
-			}
-		}
-		for(int j = 0; j < count; j++) {
-			carMap.remove(iarr[j]);
-		}
-		
-		
-		 return res;	
+//		for(Map.Entry<Integer, Car> entry : carMap.entrySet()) {		
+//			Car car = entry.getValue();
+//			int num = entry.getKey();
+//			if(car.getCarNum()==carNum) {
+//				iarr[i] = num;
+//				i++;
+//				res = 1;
+//				count ++;
+//			}
+//		}
+//		for(int j = 0; j < count; j++) {
+//			carMap.remove(iarr[j]);
+//		}
+//		
+//		
+//		 return res;	
+//		 
+		 
+		 for(Map.Entry<Integer,Car> entry : carMap.entrySet()) {
+			 Car car = entry.getValue();
+			 int num = entry.getKey();
+			 	if(car.getCarNum() == carNum) {
+			 		if(car.getOwner().equals(name)) {
+			 			carMap.remove(num);
+			 			return 1;
+			 		}
+			 	}
+		 } return 0;
+		 
+		 
+		 
 }
 		
 		
