@@ -4,9 +4,9 @@ public class Run {
 
 	public static void main(String[] args) {
 
-	//	new JFrameTest();
+		new JFrameTest();
 		
-		new JFrameTest2().showMainFrame();
+	//	new JFrameTest2().showMainFrame();
 		
 		
 		
