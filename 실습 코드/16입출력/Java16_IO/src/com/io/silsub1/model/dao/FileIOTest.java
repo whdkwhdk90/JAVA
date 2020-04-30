@@ -29,6 +29,7 @@ public class FileIOTest {
 			str = br.readLine();
 			fw = new FileWriter(str,true);
 			
+			
 			//강사님은 char[] car = str.toCharArray(); 쓰셨음
 			
 			

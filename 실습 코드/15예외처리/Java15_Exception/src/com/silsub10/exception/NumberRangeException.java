@@ -1,4 +1,4 @@
-package com.silsub1.exception;
+package com.silsub10.exception;
 
 public class NumberRangeException extends Exception{
 

@@ -22,10 +22,7 @@ public class TestStream {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+
 	}
 	
 	public void input() {

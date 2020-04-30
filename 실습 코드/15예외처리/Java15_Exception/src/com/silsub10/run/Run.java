@@ -1,6 +1,6 @@
 package com.silsub10.run;
 
-import com.silsub1.exception.NumberRangeException;
+import com.silsub10.exception.NumberRangeException;
 import com.silsub10.view.ConsoleIO;
 
 public class Run {

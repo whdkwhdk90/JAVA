@@ -32,15 +32,7 @@ public class TestStream {
 			e1.printStackTrace();
 		}
 		
-		
-		
-		
-
-		
-		
-		
-		
-		
+	
 	}
 	
 	

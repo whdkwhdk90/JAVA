@@ -1,8 +1,5 @@
 package com.io.silsub2.controller;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 import com.io.silsub2.model.dao.NoteDao;
@@ -39,15 +36,11 @@ public class NoteManager {
 	}
 	public void fileOpen() {
 		NoteDao nd = new NoteDao();
-		StringBuilder sb = new StringBuilder();
 		System.out.print("열기할 파일명을 입력하세요: ");
 		String str = sc.next();
-		
 		System.out.println(nd.fileOpen(str));
 		
-		
-		
-		
+	
 	}
 	
 	

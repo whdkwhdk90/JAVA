@@ -17,8 +17,13 @@ public class Run {
 //		//1000mile seconds = 1초
 		
 		String originTime = new Date(0L).toGMTString();
+		System.out.println(originTime);
+		originTime = new Date(1000L).toGMTString();
 		System.out.println(originTime);	 //Greenwich Mean Time
 										//그리니치 표준 시간(세계  표준 시간)
+		//괄호안은 milsecond 추가
+		
+		
 		
 		Date today = new Date();
 		System.out.println(today);
@@ -28,7 +33,6 @@ public class Run {
 													//월만 대문자로 쓰는듯??
 		System.out.println(sdf.format(today));
 	
-		
 		System.out.println("-----캘린더-----");
 		Calendar calendar = Calendar.getInstance();
 		//현재 시간

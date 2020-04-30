@@ -3,8 +3,6 @@ package com.silsub1.controller;
 import com.silsub1.exception.CharCheckException;
 import com.silsub1.view.ConsoleIO;
 
-
-
 public class CharacterProcess {
 	int count = 0;
 	public CharacterProcess(){}

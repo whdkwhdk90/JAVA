@@ -1,5 +1,6 @@
 package com.silsub10.controller;
 
+import com.silsub10.exception.NumberRangeException;
 import com.silsub10.view.ConsoleIO;
 import com.silsub1.exception.*;
 public class NumberProcess {
