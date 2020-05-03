@@ -27,27 +27,15 @@ public class TestByteStream {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
 				fout.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
 	}
 	
 	
@@ -95,9 +83,7 @@ public class TestByteStream {
 //					System.out.print(gap+" ");
 //					}			
 //			}
-			
-			
-			//강사님
+		//강사님
 			int no;
 			while( (no = fin.read()) != -1) {
 				System.out.print((char)no+" ");
@@ -105,29 +91,12 @@ public class TestByteStream {
 			
 			//sample.txt 파일안에 한글을 입력하면 출력 깨짐.(이건 byte단위, 한글은 2byte단위이기에)
 			
-			
-			
-			
-			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import com.silsub1.exception.NumberRangeException;
 import com.silsub10.controller.NumberProcess;
+import com.silsub10.exception.NumberRangeException;
 
 public class ConsoleIO {
 

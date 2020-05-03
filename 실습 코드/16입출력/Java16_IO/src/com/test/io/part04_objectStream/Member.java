@@ -19,7 +19,7 @@ public class Member implements java.io.Serializable {
 	private String email;
 	private int age;
 	private char gender;
-	//
+
 	
 	
 	
@@ -85,7 +85,6 @@ public class Member implements java.io.Serializable {
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
-
 
 	@Override
 	public int hashCode() {

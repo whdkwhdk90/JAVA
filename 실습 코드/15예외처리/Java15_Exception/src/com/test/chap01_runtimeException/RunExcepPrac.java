@@ -32,9 +32,9 @@ public class RunExcepPrac {
 //		//ClassCastException
 //		Object obj = 'a';
 //		System.out.println(obj);
-		
-		
-		
+//		
+//		
+//		
 //		//obj안에는 문자가 들어가있는데 string으로 형변환하려해서 에러 발생!!
 //		String str =  (String)obj;
 //		System.out.println(str);
@@ -42,8 +42,8 @@ public class RunExcepPrac {
 		
 		
 		
-		//ArrayIndexOutOfBoundsException
-		// 배열에서 없는 방에 접근하려할때 발생
+//		//ArrayIndexOutOfBoundsException
+//		// 배열에서 없는 방에 접근하려할때 발생
 //		int[] arr = new int[2];
 //		arr[0]  = 1;
 //		arr[1] = 2;
