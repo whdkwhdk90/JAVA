@@ -22,6 +22,7 @@ public class MyClient {
 		
 		//서버로 전송
 		ds.send(sendP);
+		
 		//종료
 		ds.close();
 		ds.disconnect();
@@ -29,3 +30,8 @@ public class MyClient {
 	}
 	
 }
+
+
+
+
+
