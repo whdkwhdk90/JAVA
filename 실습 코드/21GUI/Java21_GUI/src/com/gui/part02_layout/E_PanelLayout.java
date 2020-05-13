@@ -35,12 +35,18 @@ public class E_PanelLayout extends JFrame{
 		JPanel panel = new JPanel();
 		panel.setSize(500,500);
 		
-		//패널에 레이아웃 설정하지 않으면 기본이 flowLayout의 center
+		System.out.println(panel.getLayout());
+		
+		//패널에 레이아웃 설정하지 않으면 기본이flowLayout의 center
 		panel.setLayout(null);
 		panel.add(lb);
 		panel.add(tf);
 		panel.add(btn);
 		panel.setBackground(Color.pink);
+		
+		
+		
+		
 		
 		this.add(panel);
 		this.setVisible(true);

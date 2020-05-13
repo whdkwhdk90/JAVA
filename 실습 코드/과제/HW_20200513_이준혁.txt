@@ -1,9 +1,11 @@
 -----------------------------------------------------------------------
 ScoreFrame.java
 -----------------------------------------------------------------------
+
 package GUI;
 
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,108 +20,114 @@ public class ScoreFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JTextField javaScore, sqlScore, total, average;
 	private JButton calcBtn;
+	
 public ScoreFrame() {
 	
 	this.setSize(320,260);
 	this.setLocation(500, 0);
 	this.setTitle("                         문제 7");
 	this.setResizable(false);
-	this.setLayout(null);
-	
+	this.setLayout(new GridLayout(4,1));
+
+		
 	JPanel panel1 = new JPanel();
-	panel1.setLayout(null);
 	panel1.setVisible(true);
-	panel1.setSize(320,260);
+	panel1.setSize(320, 100);
+	panel1.setLocation(0, 0);
 	
 	Font f = new Font("신명조", Font.BOLD, 28);
 	JLabel label = new JLabel("점수를 입력하세요");
-	label.setLocation(0, 0);
-	label.setSize(320,100);
 	label.setHorizontalAlignment(JLabel.CENTER);
 	label.setFont(f);
 	panel1.add(label);
-	this.add(panel1);
+	
+	
+	JPanel panel2 = new JPanel();
+	panel2.setVisible(true);
 	
 	JLabel java = new JLabel("자바:");
 	java.setSize(40,25);
-	java.setLocation(10, 100);
-	panel1.add(java);
+	java.setLocation(10, 00);
+	panel2.add(java);
+	
+	javaScore = new JTextField(7);
+	javaScore.setSize(80, 25);
+	javaScore.setLocation(70, 00);
+	panel2.add(javaScore);
+	
 	
 	JLabel sql = new JLabel("SQL:");
 	sql.setSize(40,25);
-	sql.setLocation(160, 100);
-	panel1.add(sql);
+	sql.setLocation(180, 00);
+	panel2.add(sql);
 	
-	JLabel tot = new JLabel("총점:");
-	tot.setSize(40,25);
-	tot.setLocation(10, 200);
-	panel1.add(tot);
+	sqlScore = new JTextField(7);
+	sqlScore.setSize(80, 25);
+	sqlScore.setLocation(240, 00);
+	panel2.add(sqlScore);
 	
-	JLabel avg = new JLabel("평균:");
-	avg.setSize(40,25);
-	avg.setLocation(160, 200);
-	panel1.add(avg);
 	
-	javaScore = new JTextField();
-	javaScore.setSize(100, 25);
-	javaScore.setLocation(50, 100);
-	panel1.add(javaScore);
-	
-	sqlScore = new JTextField();
-	sqlScore.setSize(100, 25);
-	sqlScore.setLocation(200, 100);
-	panel1.add(sqlScore);
+	JPanel panel3 = new JPanel();
+	panel3.setVisible(true);
 	
 	calcBtn  = new JButton("계산하기");
 	calcBtn.setSize(90,25);
 	calcBtn.setLocation(110, 150);
-	panel1.add(calcBtn);
-	
-	total = new JTextField();
-	total.setSize(100, 25);
-	total.setLocation(50, 200);
-	panel1.add(total);
-	
-	average = new JTextField();
-	average.setSize(100, 25);
-	average.setLocation(200, 200);
-	panel1.add(average);
+	panel3.add(calcBtn);
 	
 	
-	calcBtn.addActionListener(new ActionListener() {
+	JPanel panel4 = new JPanel();
+	panel4.setVisible(true);
+
+	JLabel tot = new JLabel("총점:");
+	tot.setSize(40,25);
+	tot.setLocation(10, 00);
+	panel4.add(tot);
+	
+	total = new JTextField(7);
+	total.setSize(80, 25);
+	total.setLocation(70, 000);
+	panel4.add(total);
+	
+	JLabel avg = new JLabel("평균:");
+	avg.setSize(40,25);
+	avg.setLocation(180, 00);
+	panel4.add(avg);
 		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String javagrade = javaScore.getText();
-			String sqlgrade = sqlScore.getText();
-			new ScoreFrame$ActionHandler(javagrade, sqlgrade);
-			javaScore.requestFocus();
-		}
-	});
+	average = new JTextField(7);
+	average.setSize(80, 25);
+	average.setLocation(240, 200);
+	panel4.add(average);
+	
+	
+	calcBtn.addActionListener(new ScoreFrame$ActionHandler());
 	
 	this.add(panel1);
+	this.add(panel2);
+	this.add(panel3);
+	this.add(panel4);
+	
 	
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	this.setVisible(true);
 	
 }
 
-
- class ScoreFrame$ActionHandler {
+ class ScoreFrame$ActionHandler implements ActionListener {
 	
-	public ScoreFrame$ActionHandler(String javagrade, String sqlgrade) {
-		int javac = Integer.parseInt(javagrade);
-		int sqlc = Integer.parseInt(sqlgrade);
-		
-		total.setText(Integer.toString(javac+sqlc));
-		average.setText(Integer.toString((javac+sqlc)/2));
-		
-	} 
-	 
+	 @Override
+	 public void actionPerformed(ActionEvent event) {
+		 int javac = Integer.parseInt(javaScore.getText());
+		 int sqlc = Integer.parseInt(sqlScore.getText());
+		 total.setText(String.valueOf((javac+sqlc)));
+		 average.setText(String.valueOf(((javac+sqlc)/2)));
+		 
+	 }
 	 
  }
 
 }
+
 
 -----------------------------------------------------------------------
 ShowScoreFrame.java

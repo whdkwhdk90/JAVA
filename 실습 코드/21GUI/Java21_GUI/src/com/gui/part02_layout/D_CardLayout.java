@@ -22,6 +22,7 @@ public class D_CardLayout extends JFrame {
 		CardLayout card = new CardLayout();
 		this.setLayout(card);
 		
+//		this.setLayout(new CardLayout());
 		
 		//패널 만들기(컴포넌트의 일종) - 다른 컴포넌트를 포함할 수 있음
 		JPanel card1 = new JPanel();
@@ -37,6 +38,7 @@ public class D_CardLayout extends JFrame {
 		card1.setBackground(Color.DARK_GRAY);
 		card2.setBackground(Color.YELLOW);
 		card3.setBackground(Color.ORANGE);
+		
 		
 		
 		//메인 프레임에 추가

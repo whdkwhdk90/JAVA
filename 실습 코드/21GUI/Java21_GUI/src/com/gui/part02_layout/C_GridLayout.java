@@ -1,6 +1,5 @@
 package com.gui.part02_layout;
 
-import java.awt.GridLayout;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;

@@ -6,7 +6,7 @@ public class Run {
 
 		new JFrameTest();
 		
-	//	new JFrameTest2().showMainFrame();
+		new JFrameTest2().showMainFrame();
 		
 		
 		
