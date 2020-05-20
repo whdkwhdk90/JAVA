@@ -1,0 +1,321 @@
+data : 관찰 결과로 나타난 실제 값
+정보 : 데이터를 기반으로 의미 부여한 것
+database : 연관된 데이터를 모으고 중복되는 데이터 최소화하여 구조적으로 통합/저장해놓은 것
+
+운영 데이터 : 조직의 목적을 위해 사용되는 데이터
+공용 데이터 : 공동으로 사용되는 데이터
+통합 데이터 : 중복으로 인한 데이터 불일치 현상 제거
+저장 데이터 : 컴퓨터 저장장치에 저장된 데이터
+
+특징
+1. 실시간 접근성 : 사용자 요청 시 실시간 결과
+2. 계속적인 변화 : 데이터 값 시간에 따라 바뀜
+3. 동시 공유 : 여러 사용자에게 동시 공유
+4. 내용에 따른 참조 : 데이터 값에 따라 참조
+
+dbms 사용이점
+1. 데이터 독립화 (프로그램, 데이터 상호 영향 최소화)
+2. 데이터 중복 최소화, 데이터 무결성 보장
+3. 데이터 보안 향상
+4. 관리 편의성 향상
+
+db 유형
+1. 계층형(트리형)
+2. 네트워크형
+3. 관계형
+4. 객체-관계형
+
+SQL : 관계형 db에서 데이터 조회/조작 하기위해 사용하는 표준 검색 언어
+
+1. DQL : 데이터 검색(SELECT)
+2. DML : 데이터 조작(INSERT, UPDATE, DELETE)
+3. DDL : 데이터 정의(CREATE, DROP, ALTER)
+4. TCL : 트랜젝션 제어(COMMIT, ROLLBACK)
+
+데이터 타입
+NUMBER				숫자
+
+CHARACTER       CHAR		고정길이 문자(2천바이트)
+		VARCHAR2	가변길이 문자(4천바이트)
+		LONG		가변길이 문자(2기가바이트)
+
+DATE				날짜
+
+LOB		CLOB		가변길이 문자(4기가바이트)
+		BLOB		BINARY DATA
+
+
+CHAR
+*SIZE : 포함된 문자열의 크기
+*크기보다 작은 문자열이 들어가면 남는 공간은 공백처리
+
+VARCHAR2 : 크기보다 작은 문자열 들어가도 공백 없이 딱 맞게 넣어줌.
+그러나, 크기보다 큰 문자열은 들어갈 수 없음
+
+
+N VAR CHAR 2 (n)
+
+N이 있는 경우
+1. 유니코드 문자형
+2. 모든 문자 2BYTE
+크기를 글자 수 단위로 받음
+
+N이 없는 경우
+1. 한글 3BYTE
+2. 영어/숫자/기호 1BYTE
+크기를 바이트 수 단위로 받음
+
+VAR가 있는 경우
+가변문자
+VAR가 없는 경우
+고정 문자
+
+2가 있는 경우
+4천바이트
+2가 없는 경우
+2천바이트
+
+CRUD : 데이터 처리 로직
+CREATE : 데이터 추가 / INSERT
+READ: 데이터 조회 / SELECT
+UPDATE : 데이터 수정 / UPDATE
+DELETE : 데이터 삭제 / DELETE
+
+SELECT (DISTINCT)*** FROM *** WHERE ***;
+DISTINCT : 중복을 허용하지 않음(중복 제거용)
+
+연결 연산자 ( ‘||’ ) : 하나의 컬럼으로 묶음
+
+비교 연산자
+<, >, <=, >= : 부등호
+= : 같다
+!=, ^=, <> : 같지 않다
+
+ORDERED BY ****** ASC : 오름차순
+ORDERED BY ****** DESC : 내림차순
+
+BETWEEN A AND B : A와 B사이(WHERE에 들어감)
+
+LIKE : 입력한 숫자, 문자가 포함된 정보를 조회
+‘_’ : 임의의 한 문자
+‘%’ : 몇자리 문자든 상관없음
+
+‘_’ 문자 자체를 쓰고 싶은 경우
+(ESCAPE 문자 뒤에 오는 _ 자체를 쓰게 됨)
+: LIKE ‘_#_%’ ESCAPE ‘#’;
+
+IN(값1, 값2 ... ) -> OR의 의미
+
+ 연산자의 우선 순위
+ 0. ( ) 괄호
+ 1. 산술 연산자(+,-,*,/);
+ 2. 연결 연산자
+ 3. 비교 연산자
+ 4. IS NULL // IS NOT NULL / LIKE, IN / NOT IN
+ 5. BETWEEN A AND B
+ 6. NOT
+ 7. AND
+ 8. OR
+
+
+LENGTH(문자열) : 문자열 길이 계산
+DUAL(임시테이블) : 임의의 테이블로 불러서 쓰는 테이블
+LENGTHB(문자열) : BYTE를 재는 단위
+(영어는 1BYTE, 한글은 3BYTE)
+
+INSTR(‘문자열’, ‘원하는 문자’) : 주어진 문자가 몇 번째에 있는지 반환하는 함수
+SUBSTR(‘문자열’, 시작위치, 길이) : 시작위치부터 길이만큼 문자열을 가지고 옴.
+
+LPAD(문자열, 길이, ‘채울 문자’) : 문자열과 길이 차이만큼 왼쪽부터 문자로 채움.
+RPAD(문자열, 길이, ‘채울 문자’) : 문자열과 길이 차이만큼 오른쪽부터 문자로 채움.
+
+LTRIM/RTRIM(문자열)
+LTRIM은 왼쪽부터 지우고, RTRIM은 오른쪽부터 지움
+LTRIM(‘문자열’,‘문자’) : 왼쪽부터 문자가 있는지 확인 후 지움. 만약 왼쪽 맨 처음글자가 해당하는 문자가 아닌 경우 종료. RTIRM도 오른쪽부터 하는 것 제외하고 마찬가지.
+TRIM : TRIM도 양쪽 끝단부터 동시 시작말고는 똑같음.
+TRIM(‘문자’ FROM ‘ 문자열’)
+
+LOWER(문자열)/ UPPER(문자열)/ INITCAP(문자열)
+: 문자열을 각각 소문자, 대문자, 첫글자만 대문자로 바꿈
+
+CONCAT(‘문자열1’, ‘문자열2’) : 문자열1+문자열2
+REPLACE(‘문자열’, ‘바꿀 문자열’, ‘바뀐 문자열’)
+: 문자열 안에 바꿀 문자열을 바뀐 문자열로 대체함.
+
+SUBSTR에서 날짜를 가져올 때 INDEX가 1일 때의 값은 년도 4자리중 3번째 자리부터 가져오게 됨.(1984 이면 8부터 가져오게됨)
+
+단일 행 함수(Single Row Function) : 결과를 찾아서 출력할 때마다 각행에 함수가 적용
+
+다중 행 함수(Multiple Row Function) : 조건절에 만족하는 모든 행을 다 찾고 나서 한번에 연산
+
+그룹 함수(Group Function) 
+SUM() : 합계 계산
+AVG() : 평균 계산
+MAX() : 최댓값 계산
+MIN() : 최솟값 계산 
+COUNT() : 해당하는 행의 개수 계산(NULL값이 존재할 경우에는 이를 계산하지 않음)
+
+SYSDATE : 현재 컴퓨터 날짜 변환함수
+MONTHS_BETWEEN(A날짜,B날짜)[A날짜가 커야 양수]
+: 두 날짜 사이의 개월 수    
+ADD MONTHS(날짜, 개월 수(정수))
+EXTRACT(YEAR | MONTH | DAY FROM 날짜데이터)
+: 지정한 날로부터 날짜 값 추출
+-> 년도는 4자리, 나머지는 지정한 숫자만큼 나옴.
+
+형변환 함수(TO_DATE<>TO_CHAR<>TO_NUMBER)
+
+TO_CHAR(날짜데이터, 날짜 포맷)
+: 날짜 데이터를 날짜 포맷으로 바꿔줌
+TO_CHAR(숫자데이터, 숫자 포맷)
+: 숫자 데이터를 숫자 포맷으로 바꿔줌.
+[0 : 남은 빈칸 0으로 표시, 9 : 남은 빈칸표시안함, 
+L :통화기호(언어에 따라 자동설정)]
+
+TO_DATE(숫자데이터, 날짜포맷)
+: 숫자 데이터를 날짜 포맷으로 바꿔줌
+
+DECODE(문자, 원하는 조건, 참 일 때 의 값, 다른 조건, 다른조건이 참 일때의 값)
+-조건은 2개뿐 아니라 더 쓸 수 있음
+-DECODE(문자, 조건, 참 일때의 값, 거짓 일때의 값) 으로 쓸 수 잇음
+
+CASE
+	WHEN 조건1    THEN 결과값1
+	WHEN 조건2	THEN 결과값2
+	WHEN 조건N	THEN 결과값N
+	ELSE 결과값N+1
+END 
+(자바의 IF문 SWITCH문 느낌)
+,는 END 다음에 씀.
+
+NVL2(컬럼명 | 데이터, NULL이 아닐 경우 값, NULL일 경우 값)
+
+ABS() : 절댓값
+MOD(칼럼OR 값, 나눌 정수) : 나눴을 때 나머지 반환 함수
+
+ROUND(숫자, 정수) : 정수의 위치에서 숫자 반올림
+(-2는 십의자리에서, 2는 소수점 둘째자리에서 반올림)
+
+CEIL() : 소수점 첫째자리에서 올림
+FLOOR() : 소수점 이하 버림
+TRUNC(숫자, 정수) : 정수의 위치에서 숫자 버림
+(ROUND처럼 정수 설명은 똑같음)
+
+NEXT_DAY(날짜, 요일 명 OR 숫자) : 날짜로부터 다가올 가장 가까운 요일 
+1:일요일, 7:토요일, ‘토요일’ OR ‘토’라고 해도 인식
+
+데이터 딕셔너리 : 현재 계정에 설정된 정보를 DB의 테이블 형태로 보관하는 테이블
+(기본:시스템 관리자만 변경 가능, 사용자 계정도 접속한 동안엔 변경 가능, 변경 후 재접속 시 초기화
+
+SELECT * FROM V$NLS_PARAMETERS
+
+ALTER SESSION SET NLS_LANGUAGE = AMERICAN;
+
+SYSDATE-10 : 날짜에서 10일이 빠짐.
+
+날짜포맷
+PM(AM) HH24:MI:SS(오후 18:50:07)
+MON : 월, DAY : 요일
+
+YY와 RR의 차이점
+YY는 무조건 20
+RR은 50보다 작으면 20, 50보다 크거나 같으면 19
+
+숫자+숫자는 사칙연산하지만
+숫자+123ABC는 에러 발생
+
+SELECT 실행 순서
+S F W G H O
+
+ORDER BY 기준1, 기준2 : 기준1 정렬 후 나머지에 대해 기준 2 정렬
+ORDER BY 기준 (DESC) : 기본 오름차순 정렬, DESC쓰면 내림차순
+
+GROUP BY 기준 : 기준으로 그룹화
+HAVING 구문 : GROUP BY 한 각 소그룹에 대한 조건 설정 (WHERE는 그룹 아닌 것에 대해서 ...)
+
+서브쿼리(이중 IF문 느낌)
+SELECT DEPT_CODE, SUM(SALARY)
+FROM EMPLOYEE
+GROUP BY DEPT_CODE
+HAVING SUM(SALARY) = (SELECT MAX(SUM(SALARY))			FROM EMPLOYEE
+			GROUP BY DEPT_CODE);
+
+SET OPERATOR (합집합, 교집합, 차집합)
+: 두 개 이상의 SELECT한 결과를 합치거나 중복을 별도로 제거하거나 하는 집합 형태의 결과로 조회하는 명령어
+
+합집합
+-UNION & UNION ALL
+UNION : 중복 제외하고 합한 것을 보여줌
+UNION ALL : 중복 포함해서 합한 것을 보여줌
+
+교집합
+-INTERSECT : 결과 중 중복되는 결과만 보여줌
+
+차집합
+-MINUS : 첫 번째 결과만이 가진 내용을 보여줌(순수A)
+
+SELECT 결과인 A와 B를 합칠 땐 컬럼 개수와 자료형이 반드시 같아야함.
+
+SELECT ~~~
+UNION / UNION ALL / INTERSECT / MINUS
+SELECT ~~~
+
+JOIN : 두 개 이상의 테이블을 하나로 합쳐서 사용함
+오라클 전용 문법 / ANSI 문법
+
+오라클 전용 문법
+1. FROM절에 ‘,’ 기호를 붙여 테이블 나열
+2. WHERE조건을 통해 합칠 테이블들의 공통 사항 작성
+
+
+ANSI 표준 문법
+FROM 테이블 다음에 JOIN 테이블 ON() | USING() 해서 사용
+ON() : 공통 컬럼의 이름이 다른 경우
+USING() : 공통 컬럼의 이름이 같은 경우
+
+INNER JOIN / OUTER JOIN
+INNER JOIN 은 모두 일치하는 데이터만 합침.
+OUTER는 둘 중 하나 혹은 둘 모두의 값을 합침.
+
+OUTER JOIN
+-LEFT JOIN : 두 테이블 중 원본(좌측) 테이블의 정보를 모두 포함하여 조회
+-RIGHT JOIN :  JOIN에 명시한 테이블의 정보를 포함하여 조회
+FULL JOIN : 두 테이블 가진 모든 것 다 조회
+
+
+-- ANSI 표준
+SELECT DEPT_CODE, EMP_NAME, DEPT_TITLE
+FROM EMPLOYEE
+LEFT JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID );
+-- ORACLE 구문
+SELECT DEPT_CODE, EMP_NAME, DEPT_TITLE
+FROM EMPLOYEE, DEPARTMENT
+WHERE DEPT_CODE  = DEPT_ID(+);   
+
++위치가 DEPT_ID라는 건 DEPT_CODE를 기준으로 즉, EMPLOYEE를 기준으로 작성하는 LEFT JOIN임.
++위치가 DEPT_CODE라면 RIGHT JOIN인걸로 알 수 있음
+
+ORACLE구문은 FULL JOIN이 없다.
+
+CROSS JOIN은 모든 ROW를 다 거치는 식으로 하기 때문에 안 쓰는게 좋음.
+(EMPLOYEE가 ROW = 23, NATIONAL이 ROW = 5)
+CROSS JOIN한 총 ROW : 115(23 * 5)
+
+SELF JOIN : 자기 자신 조인
+다중 JOIN : 조인한 결과 기준으로 계속 조인
+(조인 순서에 주의)
+
+SUB QUERY : 메인쿼리 안에서 다른 쿼리를 추가하는 기법
+
+단일 행 서브쿼리 : 결과값이 1개 나오는 서브쿼리
+다중 행 서브쿼리 : 결과값이 여러 개 나오는 서브쿼리
+다중 행 다중 열 서브쿼리 : 여러 줄, 여러 컬럼을 가진 서브쿼리를 사용하여 결과를 조회
+
+서브 쿼리의 사용 위치
+-SELECT ,FROM, WHERE, GROUP BY, HAVING, ORDER BY, JOIN
+- DML : INSERT, UPDATE, DELETE
+- DDL : CREATE TABLE, CREATE VIEW
+어느 위치든 사용 가능
+
+
+
