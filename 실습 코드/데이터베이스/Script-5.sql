@@ -1,0 +1,3 @@
+-- test계정 생성
+
+CREATE USER TEST IDENTIFIED BY TEST;
