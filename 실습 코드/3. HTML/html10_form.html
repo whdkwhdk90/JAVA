@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="html10_form_res.html" method="post">      <!-- get과 post는 사용방식은 같지만 get은 주소에 붙이고 post는 숨겨서 이동-->
+        <fieldset>
+            <legend>회원가입</legend>
+            <p>ID: <input type="text" name="id"/></p>
+            <p>PW: <input type="password" name="pw"/></p>
+            <p>Email: 
+                <input type="radio" name="radio" value="y">y
+                <input type="radio" name="radio" value="n">n
+            </p>
+            <p>
+                <input type="checkbox" name="cb1" value="html">HTML
+                <input type="checkbox" name="cb2" value="css">CSS
+            </p>
+            <p>
+                <input type="submit" value="전송">
+                <input type="reset" value="취소">
+                <input type="button" value="그냥 버튼">
+            </p>
+            <p>
+                <input type="file">
+                <input type="hidden" name="hidden01" value="my_hidden_value">
+            </p>
+        </fieldset>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .area{
+            border : 1px solid black;
+            width : 300px;
+            height : 100px;
+        }
+    </style>
+</head>
+<body>
+    <h3>아이디로 접근하기</h3>
+    <div id="area1" class="area"></div>
+    <button onclick="searchId();">아이디로 접근</button>
+    <script>
+        function searchId(){
+            //id가 area1인 div태그를 선택하여
+            //배경색은 노란색, "<b>아이디로 접근</b>"를 추가해보자.
+            var doc = document.getElementById("area1");
+            doc.innerHTML = "<b>아이디로 접근</b>";
+            doc.style.backgroundColor = "yellow"; 
+        }
+    </script>
+
+    <hr>
+
+    <h3>태그명으로 접근</h3>
+    
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+    </ul>
+    <button onclick="searchTagName();">태그명으로 접근</button>
+    <script>
+        function searchTagName(){
+            var doc = document.getElementsByTagName("li");
+            console.log("전달받은 li태그 수: "+doc.length);
+
+            var change = 50;    //향상된 for문과 비슷함
+            for(var i in doc){
+                doc[i].style.backgroundColor="rgb(130,220,"+change+")";
+                change += 50;
+            }
+        }
+    </script>
+
+    <hr>
+
+    <h3>이름으로 접근</h3>
+    <form>
+        <fieldset>
+            <legend>취미</legend>
+            <table>
+                <tr>
+                <td><input type="checkbox" name="hobby" value="game" id="game"/>게임</td>
+                <td><input type="checkbox" name="hobby" value="music" id="music"/>음악감상</td>
+                <td><input type="checkbox" name="hobby" value="movie" id="movie"/>영화보기</td>
+                </tr>
+                 <tr>
+                    <td><input type="checkbox" name="hobby" value="book" id="book"/>독서</td>
+                    <td><input type="checkbox" name="hobby" value="exercise" id="exercise"/>운동</td>
+                 </tr>   
+            </table>
+        </fieldset>
+    </form>
+    <br>
+    <div id="area2" class="area"></div>
+        <button onclick="searchName();">이름으로 접근</button>
+    <script>
+        function searchName(){
+            var doc = document.getElementsByName("hobby");
+            
+            var value="";
+            for(var i=0; i<doc.length; i++){
+                if(doc[i].checked==true){
+                    value += doc[i].value+" 선택함<br>";
+                }
+            }
+
+            document.getElementById("area2").innerHTML = value;
+
+
+        }
+    </script>
+
+
+
+</body>
+</html>

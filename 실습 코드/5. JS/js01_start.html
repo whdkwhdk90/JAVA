@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 3. 외부 링크 방식-->
+    <script type="text/javascript" src="js/text.js">
+    
+    </script>
+
+    <!-- 2. 내부 작성 방식-->
+    <script type="text/javascript">
+        function embTest(){
+            alert("embTest()");
+            var doc = document.getElementsByTagName("li")[1];
+            doc.style.color="red";
+            doc.innerHTML="<strong>글자가 바뀝니다.</strong>";
+         }
+   
+   
+        function embTest2(){    /* 배열이라 0부터 시작*/
+            var doc = document.getElementsByTagName("li")[3];
+            doc.style.color="white";
+            doc.style.backgroundColor="blue";
+            doc.innerHTML="<b>JavaScript</b>";
+        }
+    </script>
+</head>
+<body>
+    <h1>자바스크립트의 작성방식</h1>
+    
+    <ol>
+        <!-- 1. inline -->
+        <li onclick="alert('inline');" >inline방식</li> <!-- onclick: 마우스 클릭했을 때 액션-->
+        <li onclick="embTest();">내부 작성 방식</li>
+        <li onclick="test();">외부 작성 방식(*.js)</li>
+        <!--
+            4번째 li를 클릭했을 때 글자를 <b>JavaScript</b>로 변경하고
+            배경색을 파란색으로 변경, 글자색을 흰색으로 변경
+            #단, 내부 작성방식을 이용해보자. 
+        -->
+        <li onclick="embTest2();">자바스크립트</li>
+    </ol>
+</body>
+</html>

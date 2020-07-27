@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style type="text/css">
+        label{
+            color: gray;
+            padding-left: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        function validate(){
+            var id = document.getElementById("userId");
+            var pw1 = document.getElementById("userPw1");
+            var pw2 = document.getElementById("userPw2");
+            var name = document.getElementById("userName");
+            var email = document.getElementById("email");
+
+            //id 검사       (//i는 대소문자 구분하지않겠다)
+            if(!check(/^[a-z][a-z\d]{3,11}$/i,id,"유효한 id를 입력하세요!")){
+                return false;
+            }
+
+            //pw검사
+            if(!check(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/,pw1,"유효한 pw를 입력하세요!") ){
+                // ?=  : 전방탐색
+                return false;
+            }
+            //pw확인
+            if(pw1.value != pw2.value){
+                alert("동일한 비밀번호를 입력하여 확인하세요");
+                pw2.value = "";
+                pw2.focus();
+                return false;
+            }
+
+            //이름검사
+            if(!check(/^[가-힣]{2,}$/,name,"유효한 이름을 입력하세요")){
+                return false;
+            }
+
+            //이메일 검사
+            if(!check(/^[\w\.]{4,}@\w+(\.\w+){1,3}$/,email,"유효한 이메일을 입력하세요")){
+            //  4자리이상의 알파벳, 숫자, _, .  (+) @ (+) 1자리 이상의 \w (+) .....................
+                return false;
+            }
+
+            return true;
+        }
+        function check(regExp, checkValue, msg){
+            if(!regExp.test(checkValue.value) ){
+                //잘못입력했을 경우 
+                alert(msg);
+                checkValue.value="";
+                checkValue.focus();
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="">
+        ID : <input type="text" name="userId" id="userId" required><br>
+        <label>영문자, 숫자 포함하여 4~12자리 입력. 첫 글자는 영문</label>
+        <br><br>
+        PW : <input type="password" name="userPw1" id="userPw1" required><br>
+        <label>영문자, 숫자, 특수문자 포함하여 8~15자로 입력</label>
+        <br><br>
+        PW Check : <input type="password" name="userPw2" id="userPw2" required><br>
+        <label>위의 비밀번호와 일치하게 입력</label>
+        <br><br>
+        NAME : <input type="text" name="userName" id="userName" required><br>
+        <label>한글로만 작성, 2글자 이상 입력</label><br><br>
+        EMAIL : <input type="email" name="email" id="email"><br>
+        <br>
+        <br>
+        <input type="submit" value="회원가입" onclick="return validate();">
+        <input type="reset" value="취소">
+    </form>
+</body>
+</html>

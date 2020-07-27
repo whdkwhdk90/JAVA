@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grouping</title>
+    <style type="text/css">                 /*type은 명시적인 용도로 쓰임. 안써도 돌아가긴 함*/
+        div{
+            border : 1px dashed red;
+        }
+        #body{
+            height: 400px;
+        }           
+        <!-- float은 위 아래가 아닌 왼쪽 오른쪽으로 됨-->
+        #left{ 
+            width : 45%;
+            height : 85%;
+            float: left;  
+        }
+        #right{
+            width : 45%;
+            height : 85%;
+            float : right;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        시맨틱 태그
+        header: 제목, 로고, 아이콘 ...
+        nav: 메뉴, 탐색링크 정의 ...
+        section: 콘텐츠를 주제별로 묶고 싶을 경우
+        article: 독립적인 컨텐츠, 내용을 정의
+        aside: 광고나 메인내용과 상관없는 내용
+        footer: 저자, 저작권, 연락처 ...
+    -->
+    <div id="header">
+        <h1>제목</h1>
+        <div>
+            <span><a href="http://www.naver.com">메뉴1</a></span>
+            <span><a>메뉴2</a></span>
+            <span><a>메뉴3</a></span>
+            <span><a>메뉴4</a></span>
+        </div>
+    </div>
+    <hr>
+    <div id="body">
+        <div id="left">
+            <p>왼쪽 본문 내용</p>
+        </div>
+        <div id="right">
+            <p>오른쪽 본문 내용</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="footer">
+        <address>copyright &copy; all rights reserved ...</address>
+    </div>
+
+</body>
+</html>

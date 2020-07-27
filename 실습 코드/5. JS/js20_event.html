@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function(){
+            alert("으잉");
+        }
+    </script>
+
+    <style type="text/css">
+         .area{
+             background-color: lightgrey;
+             border : 1px solid red;
+             height : 100px;
+         }
+    </style>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <button id="test1">test1()실행확인</button>
+
+    <h3>이벤트 발생 객체</h3>
+    <button id="test2">test2()실행확인</button>
+
+    <div id="area1" class="area"></div>
+    <script type="text/javascript">
+        var test1 = document.getElementById("test1");
+        //자바 이벤트 리스너 같은느낌.
+        test1.onclick = function(){
+            var area = document.getElementById("area1");
+            area.innerHTML += "test1()이 실행!<br>";
+        }
+
+        var test2 = document.getElementById("test2");
+        test2.onclick = function(e){
+            this.style.backgroundColor = "red";
+            this.style.color = "white";
+
+            var event = e;
+            var area2 = document.getElementById("area1");
+            for(var key in event){
+                area2.innerHTML += key + " : " + event[key] + "<br>"; 
+            }
+        }
+    </script>
+
+    <h3>인라인 이벤트 모델</h3>
+    <button onclick ="test3();">실행확인</button>
+    <script type="text/javascript">
+        function test3(){
+            alert("test3 실행확인");
+        }
+    </script>
+
+
+</body>
+</html>

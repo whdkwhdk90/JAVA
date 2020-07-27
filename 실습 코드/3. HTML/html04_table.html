@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표 관련 태그</title>
+</head>
+<body>
+        <!-- 
+            표를 만드는 태그에는 <table><tr><th><td>가 있다.
+            <table> : 기본적인 표를 생성해주는 태그
+            <tr> : 표의 행을 나타내는 태그
+            <th> : 표의 제목 셀을 나타내는 태그
+            <td> : 표의 일반 셀을 나타내는 태그
+        -->
+        <h2>기본 테이블 만들기</h2>
+        <table border="1" style="width: 300px;">              <!-- 테두리 두께 1-->
+            <tr style="background-color: slategray;">
+                <th>컬럼01</th>
+                <th>컬럼02</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+            </tr>
+        </table>
+
+        <hr>
+        <h2>주요 태그 사용해서 table 생성하기</h2>
+        <table border="1">
+            <caption>테이블 제목</caption>
+            <colgroup>
+                <col width="100px"/>
+                <col width="200px"/>
+                <col width="300px"/>
+            </colgroup>
+            <tfoot>                     <!-- 각 영역을 작성하는 순서는 상관없이 head, body, foot 순서로 보여줌.-->
+                <tr>
+                    <td>f1</td>
+                    <td>f2</td>
+                    <td>f3</td>
+                </tr>
+            </tfoot>
+            <thead>
+                <tr>
+                    <th>컬럼01</th>
+                    <th>컬럼02</th>
+                    <th>컬럼03</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>02</td>
+                    <td>03</td>
+                </tr>
+                <tr>
+                    <td>04</td>
+                    <td>05</td>
+                    <td>06</td>
+                </tr>
+                <tr>
+                    <td>07</td>
+                    <td>08</td>
+                    <td>09</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+        <h2>테이블 셀 병합하기</h2>
+        <table border="1">
+            <caption>병합 테이블</caption>
+            <thead style="background-color : mediumaquamarine">
+                <tr>
+                    <th>컬럼1</th>
+                    <th>컬럼2</th>
+                    <th>컬럼3</th>
+                    <th>컬럼4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">1</td>          <!--본인 줄 포함 rowspan의 크기만큼 합쳐짐(1이 2칸을 쓰는거임(합쳐지는게 아니라 칸을 늘리는것 같은 개념)-->
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td colspan="2">6</td>
+                    <td>7</td>
+                    <td>8</td>                      <!--위에서 rowspan을 썼기에 5번이 옆으로 한칸씩 밀려서 8번은 테이블을 벗어나는 위치에 있음-->
+                                                    <!-- 6번에 colspan까지 쓰면 옆으로 밀리는건 7,8번임-->
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">가로 합치기</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <hr>
+        <table border="1">
+            <caption>병합 테이블</caption>
+            <thead style="background-color : mediumaquamarine">
+                <tr>
+                    <th>컬럼1</th>
+                    <th>컬럼2</th>
+                    <th>컬럼3</th>
+                    <th>컬럼4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3">1</td>         
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td colspan="2">6</td>                             
+                </tr>
+                <tr>
+                    <td colspan="3">7</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">가로 합치기</td>
+                </tr>
+            </tfoot>
+        </table>
+
+
+</body>
+</html>
