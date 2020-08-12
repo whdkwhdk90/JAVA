@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="form3" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Grid id="Grid00" taborder="0" left="28" top="53" width="220" height="166" binddataset="test" autofittype="col" autosizingtype="none">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="CODE"/>
+                <Cell col="1" text="VALUE"/>
+                <Cell col="2"/>
+                <Cell row="1"/>
+                <Cell row="1" col="1"/>
+                <Cell row="1" col="2"/>
+                <Cell row="2"/>
+                <Cell row="2" col="1"/>
+                <Cell row="2" col="2"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:CODE"/>
+                <Cell col="1" text="bind:VALUE"/>
+                <Cell col="2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="Combo00" taborder="1" text="Combo00" left="325" top="47" width="151" height="33" innerdataset="Dataset00" datacolumn="name" codecolumn="url" onitemchanged="Combo00_onitemchanged"/>
+        <ImageViewer id="ImageViewer00" taborder="2" left="504" top="41" width="183" height="280" onclick="ImageViewer00_onclick" stretch="fixaspectratio"/>
+        <Grid id="Grid01" taborder="3" left="31" top="351" width="179" height="189" binddataset="gds_emp" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="EMPL_ID"/>
+                <Cell col="1" text="FULL_NAME"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:EMPL_ID"/>
+                <Cell col="1" text="bind:FULL_NAME"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div00" taborder="4" text="Div00" left="236" top="346" width="404" height="354">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="FULL_NAME" left="4" top="13" width="75" height="33" color="black" background="pink" textAlign="center"/>
+              <Static id="Static01" taborder="1" text="EMPL_ID" left="4" top="48" width="75" height="33" onclick="Div00_Static01_onclick" color="black" background="pink" textAlign="center"/>
+              <Static id="Static02" taborder="2" text="HIRE_DATE" left="4" top="88" width="75" height="33" color="black" background="pink" textAlign="center"/>
+              <Static id="Static03" taborder="3" text="MEMO" left="4" top="294" width="75" height="33" color="black" background="pink" textAlign="center"/>
+              <Static id="Static04" taborder="4" text="DEPT_CD" left="4" top="254" width="75" height="33" onclick="Div00_Static04_onclick" color="black" background="pink" textAlign="center"/>
+              <Static id="Static05" taborder="5" text="GENDER" left="4" top="208" width="75" height="33" color="black" background="pink" textAlign="center"/>
+              <Static id="Static06" taborder="6" text="SALARY" left="4" top="168" width="75" height="33" color="black" background="pink" textAlign="center"/>
+              <Static id="Static07" taborder="7" text="MARRIED" left="4" top="128" width="75" height="33" color="black" background="pink" textAlign="center"/>
+              <Edit id="Edit00" taborder="8" left="123" top="19" width="159" height="21"/>
+              <MaskEdit id="MaskEdit00" taborder="9" left="123" top="53" width="159" height="23" format="AA-###" type="string"/>
+              <MaskEdit id="MaskEdit01" taborder="10" left="123" top="170" width="159" height="24" format="#,###"/>
+              <TextArea id="TextArea00" taborder="11" left="124" top="294" width="159" height="49"/>
+              <Combo id="Combo00" taborder="12" left="121" top="250" width="159" height="29" text="" innerdataset="gds_dept" codecolumn="CODE" datacolumn="NAME"/>
+              <Radio id="Radio00" taborder="13" left="123" top="208" width="159" height="33" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">M</Col>
+                      <Col id="datacolumn">남성</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">W</Col>
+                      <Col id="datacolumn">여성</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Calendar id="Calendar00" taborder="14" left="123" top="89" width="159" height="31"/>
+              <CheckBox id="CheckBox00" taborder="15" text="결혼여부" left="121" top="134" width="161" height="27"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.fn_imagechanger = function(){
+	var url = this.Combo00.value;
+	this.ImageViewer00.set_image(url);
+}
+
+this.Combo00.setEventHandler("onitemchanged",this.fn_imagechanger,this);
+this.Div00_Static04_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+this.Div00_Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="Dataset00">
+        <ColumnInfo>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="url" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="name">이미지</Col>
+            <Col id="url">imagerc::image.gif</Col>
+          </Row>
+          <Row>
+            <Col id="name">이미지2</Col>
+            <Col id="url">imagerc::image2.jpg</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.TextArea00" propid="value" datasetid="gds_emp" columnid="MEMO"/>
+      <BindItem id="item2" compid="Div00.form.MaskEdit01" propid="value" datasetid="gds_emp" columnid="SALARY"/>
+      <BindItem id="item3" compid="Div00.form.Calendar00" propid="value" datasetid="gds_emp" columnid="HIRE_DATE"/>
+      <BindItem id="item4" compid="Div00.form.MaskEdit00" propid="value" datasetid="gds_emp" columnid="EMPL_ID"/>
+      <BindItem id="item5" compid="Div00.form.Edit00" propid="value" datasetid="gds_emp" columnid="FULL_NAME"/>
+      <BindItem id="item6" compid="Div00.form.CheckBox00" propid="value" datasetid="gds_emp" columnid="MARRIED"/>
+      <BindItem id="item7" compid="Div00.form.Combo00" propid="value" datasetid="gds_emp" columnid="DEPT_CD"/>
+      <BindItem id="item1" compid="Div00.form.Radio00" propid="value" datasetid="gds_emp" columnid="GENDER"/>
+    </Bind>
+  </Form>
+</FDL>

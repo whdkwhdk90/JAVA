@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="form2" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Button id="Button00" taborder="0" text="아오" left="35" top="60" width="223" height="100" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="1" text="슥양이 지쥬?" left="40" top="241" width="225" height="131" onclick="Button01_onclick"/>
+        <ImageViewer id="ImageViewer00" taborder="2" text="" left="379" top="51" width="431" height="365" onclick="ImageViewer00_onclick" stretch="fixaspectratio"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ImageViewer00.set_image("imagerc::image.gif");
+	this.ImageViewer00.set_stretch("none");
+};
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ImageViewer00.set_image("imagerc::image2.jpg");
+	
+};
+
+]]></Script>
+    <Objects>
+      <Dataset id="ds_items">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">COM</Col>
+            <Col id="VALUE">컴퓨터</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">LAP</Col>
+            <Col id="VALUE">노트북</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">TAB</Col>
+            <Col id="VALUE">태블릿</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>
