@@ -1,0 +1,88 @@
+AspectJ를 쓰기 위해서
+
+<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.5</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjrt -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.9.5</version>
+		</dependency>
+
+POM.XML에 디펜던시를 추가한다.
+
+
+
+advice + pointcut = aspect or adviser
+
+joinpoint : 어드바이스가 연결될 수 있는 모든 포인트(지점)
+
+pointcut : 그 joinpoint들 중 어드바이스가 연결하고 싶은 한 지점
+
+
+
+MTest가 실행하면 그 행동을 invoke가 가로채면서 우리가 원하던 그 코드는 
+target = invocation.proceed() 부분에서 실행한다.
+
+pointcut을 설정해준게 com.test02.Woman.classWork으로 설정해뒀으면 남학생부분은 본인만 실행하고 공통부분은 실행되지 않는다.
+
+
+ccc: 공통 관심 사항
+=> bean : MyAspect
+
+
+proxy 객체 생성
+
+bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+
+
+cc(aspect) : advice + pointcut
+class="org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor"
+
+<bean id="myAdvisor"
+		class="org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor">
+		<property name="advice" ref="myAdvice"></property>
+		<!-- <property name="expression" value="execution(public * *(..))"></property> -->
+		<property name="expression" value="execution(public * com.test02.Woman.classWork(..))"></property>
+</bean>
+
+execution(public void com.test02.Woman.classWork(..))
+	void 부분에는 리턴 타입. *도 됨.
+	com.test02.Woman.classWork(..) => com.test02.Woman도 되고 범위 설정은 선택하기 나름. *도 됨.
+
+
+target = invocation.proceed();  => MTest에서 실행되는 메소드가 실행되는 부분
+
+
+<aop:config>
+		<aop:aspect ref="myAspect">
+			<aop:before method="before" pointcut="execution(public * *(..))"/>
+			<aop:after method="after" pointcut="execution(public * *(..))"/>
+		</aop:aspect>
+		
+	</aop:config>
+
+앞에서 Component-config처럼 aop를 config해주는애다. before부분엔 before메소드가 after부분엔 after메소드가 들어간다.
+
+
+
+
+<aop:aspectj-autoproxy /> => component-autoscan처럼 자동으로 프록시를 구성한다. 이때 aspect부분은 @Aspect라고 어노테이션을 달고
+
+before부분엔 @Before("execution(public String *(..))")
+
+After부분엔 @After("execution(public * com.test04.*.*(..))")
+
+AfterReturning부분엔 @AfterReturning(pointcut="execution(public * *(..))", returning="returnVal")
+
+AfterThrowing부분엔 @AfterThrowing("execution(public * *(..))")으로 설정한다.
+
+AfterReturning은 정상적으로 실행될 때 after 다음으로 오는 것이고, 예외가 발생한 경우에는 after 다음에
+afterThrowing이 나온다.
+
+// 정상:  before - 메인 - after - afterReturning
+// 예외발생 : before - 메인 - after - afterThrowing
