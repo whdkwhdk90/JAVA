@@ -1,0 +1,35 @@
+component-scan에서 com.test05로 써도되고 com/test05도 써도 된다.
+
+Aspect의 기본생성자에 @Pointcut("execution(public * *(..))")을 설정해두고
+before나 after의 어노테이션을 기본생성자이름으로 설정해둬도 실행된다.
+ex) @After("myClass()")
+
+
+
+Component-scan을 쓰지않으려면 MyAspect bean객체 만들어서 사용하면 됨.
+
+기존에 @Before나 @After를 xml에서
+	<!-- <aop:config>
+		<aop:pointcut expression="execution(* viewSize())" id="viewPoint"/>
+		<aop:aspect ref="myAspect">
+			<aop:before method="before" pointcut-ref="viewPoint"/>
+			<aop:before method="after" pointcut-ref="viewPoint"/>
+		</aop:aspect>
+	</aop:config> 
+
+이런식으로 직접 config할 수 있음.
+
+메인컨트롤러는 위에 @Controller 라는 어노테이션을 선언해주면 일단 요청이 여길로 들어온다.
+
+@RequestMapping("/hello.do")를 통해서 주소에 따라 각각 매핑을 시켜줄 수 있다.
+
+메소드의 매개변수란에 @RequestParam("name")을 써놓으면 name에 해당되는 값을 가져갈 수 있다.
+ex) name=spring이면 여기에는 spring이 들어간다.
+
+
+<mvc:annotation-driven />
+
+==> 스프링 MVC 컴포넌트들을 그것의 디폴트 설정을 가지고 활성화 하기위해 사용됨.
+context:component-scan과 다른점은 @Controller에게 요청을 전파하기위해 요구되는 HandlerMapping과 HandlerAdapter를 등록한다.
+근데 그렇다고해서 둘의 관계에는 의존성이 없다.
+컴포넌트-scan이 선언되었으면 MVC:annotation-driven은 굳이 해줄 필요없다. 근데 역은 안되는 것 같다.
