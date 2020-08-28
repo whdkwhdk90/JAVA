@@ -1,0 +1,212 @@
+1. pom.xml 설정
+
+<repository>
+-------------------------------------------------------------------------------------------------------------------------------
+<!-- 1. ojdbc6 repository -->
+<repositories>
+	<repository>
+		<id>datanucleus</id>
+		<url>http://www.datanucleus.org/downloads/maven2/</url>
+	</repository>
+</repositories>
+-------------------------------------------------------------------------------------------------------------------------------
+
+<dependency>
+-------------------------------------------------------------------------------------------------------------------------------
+<!-- 1. ojdbc6 -->
+<!-- https://mvnrepository.com/artifact/oracle/ojdbc6 -->
+<dependency>
+	<groupId>oracle</groupId>
+	<artifactId>ojdbc6</artifactId>
+	<version>11.2.0.3</version>
+</dependency>
+
+<!-- 2. mybatis -->
+<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+<dependency>
+	<groupId>org.mybatis</groupId>
+	<artifactId>mybatis</artifactId>
+	<version>3.5.3</version>
+</dependency>
+
+<!-- 3. mybatis-spring -->
+<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+<dependency>
+	<groupId>org.mybatis</groupId>
+	<artifactId>mybatis-spring</artifactId>
+	<version>2.0.3</version>
+</dependency>
+
+<!-- 4. commons-dbcp -->
+<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+<dependency>
+	<groupId>commons-dbcp</groupId>
+	<artifactId>commons-dbcp</artifactId>
+	<version>1.4</version>
+</dependency>
+
+<!-- 5. spring-orm -->
+<!-- 유의사항: spring-orm은 현재 springframework와 버전을 맞추기 위해서 ${org.springframework-version} 으로 씀 -->
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-orm</artifactId>
+	<version>${org.springframework-version}</version>
+</dependency>
+-------------------------------------------------------------------------------------------------------------------------------
+
+2. web.xml 설정
+
+1) context-param => param-value에서 root-context -> appServlet/applicationContext로 변경
+
+2)servlet-mapping => url-pattern 값을  / -> *.do로 변경(주소를 어떻게 가져오느냐에 따라 설정 값 변경)
+
+3)filter와 filter-mapping 설정
+<filter>
+	<filter-name>encodingFilter</filter-name>
+	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	<init-param>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</init-param>
+	<init-param>
+		<param-name>forceEncoding</param-name>
+		<param-value>true</param-value>
+	</init-param>
+</filter>
+
+<filter-mapping>
+	<filter-name>encodingFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+**WEB-INF/spring/root-context.xml 폴더를 spring/appServlet으로 옮기고 applicationContext로 이름 변경.
+
+3. sql파일 생성
+경로 : /WEB-INF/spring/sqls/test.sql
+
+테이블이나 시퀀스 등 SQL문 작성
+
+계정 생성하는 방법
+1)계정 생성
+create user [id] identified by [pw];
+
+2)계정 권한 부여
+grant connect, resource, dba to [id];
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+4. dto, dao, biz, controller 설정
+
+각 필드부분 : @Autowired
+
+dao : @Repository
+Biz : @Service
+controller : @Controller
+
+cotroller-biz-dao-sqlSessionTemplate 순이어서 Biz에선 dao객체를, controller에선 biz객체를 가지고 있음.
+-------------------------------------------------------------------------------------------------------------------------------
+
+5. src/main/resources/mybatis/board-mapper.xml & db.properties생성
+
+db.properties 내용
+
+driver=oracle.jdbc.driver.OracleDriver
+url=jdbc:oracle:thin:@localhost:1521:xe
+username=KH
+password=KH
+
+board-mapper.xml
+
+1)config 구성
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+2) mapper 설정
+
+<mapper namespace="myboard">
+	<resultMap type="boardDto" id="boardMap">
+		<result property="myno" column="MYNO" />
+		<result property="myname" column="MYNAME" />
+		<result property="mytitle" column="MYTITLE" />
+		<result property="mycontent" column="MYCONTENT" />
+		<result property="mydate" column="MYDATE" />
+	</resultMap>
+	
+	<select id="selectList" resultMap="boardMap">
+		SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE
+		FROM MYBOARD
+		ORDER BY MYNO DESC
+	</select>
+</mapper>  
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+6. /WEB-INF/spring/sqls/config.xml 생성
+
+1)config 구성
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+2)configuration 설정
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.edu.mvc.model.dto.BoardDto" alias="boardDto"/>
+	</typeAliases>
+	
+	<!-- resource : src/main/resources와 연결 -->
+	<mappers>
+		<mapper resource="/mybatis/board-mapper.xml" />
+	</mappers>
+	<!-- environment는 이미 applicationContext.xml에서 설정이 되어있기 때문에 따로 설정안함. -->
+</configuration>  
+
+mapper resource는 resource가 이미 src/main/resources이기 때문에 /mybatis/board-mapper.xml로 설정한다.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+7. servlet-context.xml & applicationContext.xml 설정
+
+1)servlet-context.xml 설정
+prefix, suffix를 통해서 파일 이동을 설정할 수 있음.
+list라는 이름을 들었으면 앞에는 /WEB-INF/VIEWS/를 붙이고 뒤에는 .JSP를 붙인 /WEB-INF/VIEWS/LIST.JSP 파일로 이동하게 된다.
+자동적으로 context:component-scan이 만들어진 것을 볼 수 있다.
+
+2)applicationContext.xml 설정
+
+2-1. db.properties 설정
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="locations">
+		<list>
+			<value>classpath:mybatis/db.properties</value>
+		</list>
+	</property>
+</bean>
+
+2-2. dataSource 설정
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<property name="driverClassName" value="${driver}"></property>
+	<property name="url" value="${url}"></property>
+	<property name="username" value="${username}"></property>
+	<property name="password" value="${password}"></property>
+</bean>
+
+2-3. mybatis 설정
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="configLocation"
+		value="WEB-INF/spring/sqls/config.xml"></property>
+</bean>
+
+2-4.  mybatis-template 설정
+<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	<constructor-arg ref="sqlSession" />
+</bean>
+
+
+
+
